@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --royal-blue: #0066cc;
+            --rich-green: #2ecc71;
+            --dark-bg: #0d1117;
+            --light-text: #f0f6fc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Nav */
+        header {
+            background: rgba(13, 17, 23, 0.95);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--royal-blue), var(--rich-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: var(--rich-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 7rem 10% 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(0, 102, 204, 0.15), transparent 30%);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            color: var(--rich-green);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-highlight:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            bottom: 10px;
+            left: 0;
+            background: var(--royal-blue);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #8b949e;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(13, 17, 23, 0.97);
+            border-top: 3px solid var(--royal-blue);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            bottom: -10px;
+            left: 0;
+            background: var(--rich-green);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .tech-item {
+            background: rgba(0, 102, 204, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--royal-blue);
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            background: radial-gradient(circle at bottom left, rgba(46, 204, 113, 0.1), transparent 30%);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light-text);
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .github {
+            background: linear-gradient(45deg, #333, #000);
+            border: 2px solid #6e5494;
+        }
+
+        .linkedin {
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+            border: 2px solid #0077b5;
+        }
+
+        .social-link span {
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-highlight {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Dmdboomer</div>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Connect</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1 class="hero-title">Welcome to my Website <br>
+            <span class="hero-highlight">My links ↓↓↓</span>
+        </h1>
+        <div class="social-links">
+            <a href="https://github.com/Dmdboomer" class="social-link" target="_blank">
+                <div class="social-icon github">
+                    <i class="fab fa-github"></i>
+                </div>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/garryhu/" class="social-link" target="_blank">
+                <div class="social-icon linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm Garry Hu, a passionate tech developer. </p>
+                <p>Currently a mathematics student at the Unversity of Waterloo</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">Data Analysis / Modeling</span>
+                    <span class="tech-item">Networks</span>
+                    <span class="tech-item">Web dev</span>
+                    <span class="tech-item">Cloud Computing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>Email: ghuwin@gmail.com | Phone: +1 204-557-9861</p>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 50 ? 
+                'rgba(13, 17, 23, 0.98)' : 
+                'rgba(13, 17, 23, 0.95)';
+        });
+
+        // Dynamic section observer
+        const sections = document.querySelectorAll('section');
+        const options = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
